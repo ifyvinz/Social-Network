@@ -1,0 +1,117 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+   <div class ="container">
+       {% if user.is_authenticated %}
+          <div id="top-content">
+             <!-- <div id="top-photo">
+                 {% if user.profile.get.photo %}
+                    <img src="{{user.profile.get.photo.url}}" alt="profile picture"  class="main-user-photo">
+                 {% else %}
+                    <i class="fas fa-user-tie fa-4x"></i>
+                 {% endif %}
+              </div>--><!-- end of top-photo div-->
+              <div id ="form-div">
+                 <form id= "post-form" class="form-container">
+                     {% csrf_token %}
+                     <div class="form-group">
+                         <textarea id="post-area" class="form-control" name="post" rows="4" cols="40" placeholder="Share your thought..."></textarea>
+                         <button id ="post-btn" class="btn btn-primary" disabled>Post</button>
+                     </div>
+                 </form>
+              </div><!-- form div ends here-->
+           </div><!-- end of top content div-->
+          
+       {% endif %}
+       
+       <div id="all-posts-div">
+           {% for post in posts %}
+           
+               <div class="each-post">
+                 
+                 <!--<img src="{{photo}}" alt=""> -->
+                   <div class="user-image">
+                    {% if post.author.profile.get.photo %}
+                       <img src="{{post.author.profile.get.photo.url}}" alt="profile picture" height="50" width="50" class="user-photo">
+                    {% else %}
+                       <i class="fas fa-user-tie fa-3x"></i>
+                    {% endif %}
+                    <!--<img src="{{post.author.profile.get.photo}}" alt="profile picture" height="100" width="100"> -->
+                    
+                   </div> <!--user-image div ends here-->
+                   <div class="post-content">
+                
+                      <div id="post-author">
+                         <h4><span><a  id="author-link" href="{% url 'profilePage' post.author%}">{{post.author.profile.get.name}}  @{{post.author}} </a> . {{post.timestamp}}</span></h4>
+                      </div>
+                      <div id="post-body-edit">
+                         <p id="post-body">{{post.body}}
+                         </p><!--end of post-body span tag-->
+                         <span id="post-edit"> 
+                            {% if user == post.author %}
+                              <div id="edit-button" data-post="{{post.body}}" data-id="{{post.id}}">Edit</div><!-- end button ends here-->
+                               <!--<button class="btn btn-primary" id="edit-button" data-post="{{post.body}}" data-id="{{post.id}}">Edit</button>-->
+                            {% endif %} 
+                         </span><!--end of edit-post span tag-->
+                         <div class ="edit-form-div">
+                            <form class="form-group" id= "post-form">
+                                {% csrf_token %}
+                                <!--<div class="form-group"> -->
+                                   <textarea id="edit-post-area" class="form-control" name="post" placeholder="{{post.body}}"></textarea>
+                                   <button id="update-button"class="btn btn-primary" data-id="{{post.id}}">Update</button>
+                               <!-- </div> --> 
+                            </form>
+                         </div><!-- edit form div ends here-->
+                      </div><!--end of post-body-edit div-->
+                        <!--<div id="timestamp"><strong>{{post.timestamp}}</strong></div> -->
+                      <div id="post-likes">
+                           {% if user.is_authenticated %}
+                              {% if user in post.likes.all %}
+                              <span class="like-span"><i class="fas fa-heart like-italic" data-id="{{post.id}}"></i><span class="added-likes">{{post.likes.count}}</span></span><!-- end of post likes span-->
+                              {% else %}
+                                 <span class="like-span"><i class="far fa-heart like-italic" data-id="{{post.id}}"></i><span class="unlike">{{post.likes.count}}</span></span><!-- end of post likes span-->
+                              {% endif %}
+                              
+                           {% else %}
+                               <span class="post-likes">
+                                   
+                                   Likes(<strong>{{post.likes.count}}</strong>)
+                    
+                               </span> 
+                          {% endif %}
+
+                       </div><!-- end of post likes and edit button div-->
+                   </div><!--post-content div ends here-->
+                   
+               </div> <!-- end of each post div-->
+               <!--<hr> -->
+           {% endfor %}
+           <div class="pagination">
+            <span class="page-item">
+                {% if posts.has_previous %}
+                    <a class="page-link" href="?page=1">&laquo; first</a>
+                    <a class="page-link" href="?page={{ posts.previous_page_number }}">previous</a>
+                {% endif %}
+        
+                <span class="current">
+                    Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+                </span>
+        
+                {% if posts.has_next %}
+                    <a class="page-link" href="?page={{ posts.next_page_number }}">next</a>
+                    <a class="page-link" href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div><!--Paginator div ends here-->
+
+       </div><!--All post div ends here-->
+      
+    
+   </div><!-- The container div closing tag-->
+{% endblock %}
+
+{% block script %}
+   <script type="module" src="{% static 'network/index.js' %}"></script>
+   
+{% endblock %}

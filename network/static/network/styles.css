@@ -1,0 +1,289 @@
+body{
+    /*background-color: #15212b;*/
+   
+    background-color: rgb(240, 240, 235);
+    /*color: #fff;*/
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#all-posts-div{
+    width: 700px;
+    margin: auto;
+}
+
+.each-post{
+    display: flex;
+    height: auto;
+    /*border: 1px solid #667;
+    border-top: 0;*/
+    padding: 1rem;
+    background-color: lightgray;
+    /*background-color: #023013;*/
+    border: 1px solid #eff3f4;
+    /*background-color: #15212b;*/
+    margin-top:1px;
+    /*border-radius: 10px;*/
+}
+
+.user-image{
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    text-align: center;
+}
+.user-photo{
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.main-user-photo{
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    text-align: center;
+}
+
+
+.post-content{
+    padding: 0.5rem;
+    line-height: 2;
+}
+
+span{
+    font-weight: 100;
+    color: grey;
+}
+
+i:hover{
+    cursor: pointer;
+}
+
+.fa-heart:hover{
+    color: red;
+    border-radius: 50%;
+    box-shadow: 0 0 5px 10px rgb(255, 0, 0, 0.25);
+    transition: all 0.5s ease-in;
+}
+.fas.fa-heart{
+    animation: animate-liked 0.5s ease-in;
+    /*animation-play-state: paused;*/
+    color: red;
+}
+
+@keyframes animate-liked{
+    0% {
+        transform: scale(1.1);
+    }
+    30% {
+        transform: scale(0.3);
+    }
+    50% {
+        transform: scale(0.5);
+    }
+    80% {
+        transform: scale(1.1);
+        
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+.added-likes{
+    color: red;
+    padding: 0.5rem;
+    transition: all 0.5s ease-in;
+}
+.unlike{
+    padding: 0.5rem;
+}
+.edit-form-div{
+    display: none;
+}
+
+.body-data{
+    display: block;
+}
+.body-empty{
+    display: none;
+}
+
+#all-posts-div{
+    background-color: rgb(248, 246, 246);
+}
+
+.page-item{
+    display: flex;
+}
+
+#current{
+    text-align:justify;
+    
+}
+
+.navbar-nav > li:hover{
+    background-color: rgb(252, 252, 252);
+    box-shadow: 0 0 1px 2px rgba(252, 249, 249, 0.25);
+    transition: all 0.2s ease-in;
+    
+}
+
+#profile-form-div{
+    display: none;
+}
+
+#profile-form-div > h2{
+    text-align: center;
+}
+
+#top-content{
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 843px;
+    margin: auto;
+}
+
+#form-div{
+    /*margin-top: 1px;*/
+    /*margin-left: 2px;*/
+    width: 800px;
+    margin-top: 3px;
+
+    
+}
+
+.form-container{
+    width: 700px;
+    margin: auto;
+    border-radius: 1px;
+}
+
+#post-btn{
+   float: right;
+   display: none;
+}
+
+#top-info{
+    /*background-color: #fff;*/
+    font-family: sans-serif;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    max-width: 700px;
+    padding: 20px;
+    margin: 1px auto 0 auto;
+}
+
+#profile-image{
+    margin: 0 auto 20px auto;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    display:block;
+}
+
+#full-name-div{
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+#about-me-div{
+    margin-bottom: 20px;
+}
+
+#follow-count{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9em;
+}
+
+#followers-count{
+    margin-left: 5px;
+}
+
+#Edit-profile-button{
+    background-color: black;
+    color: #fff;
+    border-radius: 20px;
+    width: 140px;
+    height: 28px;
+    font-size: 15px;
+    margin-left: 2px;
+    padding: 2px;
+    cursor: pointer;
+    
+}
+#follow-button{
+    background-color: black;
+    color: #fff;
+    border-radius: 20px;
+    width: 140px;
+    height: 27px;
+    font-size: 15px;
+    margin-left: 2px;
+    padding: 2px;
+    cursor: pointer;
+}
+
+#Edit-profile-button:hover, #follow-button:hover{
+    background-color:rgb(74, 75, 75);
+}
+
+.follow-and-edit-button{
+    margin-top: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9em;
+} 
+
+#author-link{
+    text-decoration: none;
+    color: black;
+    font-size: 0.92em;
+    
+}
+
+#author-link:hover{
+    color: rgb(74, 75, 75); 
+    text-decoration: underline;
+    
+}
+
+#nav-barr{
+    /*margin: auto;*/
+    line-height: 50px;
+    font-weight: bold;
+    /*width: 900px;*/
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+#edit-button{
+    cursor: pointer;
+    width: 40px;
+    color: gray;
+
+}
+
+#edit-button:hover{
+    border: #eff3f4;
+    background-color: black;
+    text-align: center;
+    border-radius: 2px;
+    color: #fff;
+}
+
+
