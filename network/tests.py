@@ -37,17 +37,17 @@ import unittest
 
 class TestRelationship(TestCase):
     def setUp(self):
-        username = "codeguru"
-        email = "codeguru@gmail.com"
-        password = "12345678"
-        user1 = User.objects.create_user(username, email, password)
+          # Create two users
+        user1 = User.objects.create_user(username="codeguru", email="codeguru@gmail.com", password="12345678")
+        user2 = User.objects.create_user(username="pythoncoder", email="pythoncoder@yahoo.com", password="abcdefgh")
         
-        username2 = "pthyoncoder"
-        email2 = "pthyoncoder@yahoo.com"
-        password2 = "abcdefgh"
-        user2 = User.objects.create_user(username2, email2, password2)
+        #username2 = "pthyoncoder"
+       # email2 = "pthyoncoder@yahoo.com"
+        #password2 = "abcdefgh"
+        #user2 = User.objects.create_user(username2, email2, password2)
 
-        friends = Relationship.objects.create(follows = user1, follow_by = user2)
+        #friends = Relationship.objects.create(follows = user1, follow_by = user2)
+        Relationship.objects.create(follows=user1, follow_by=user2)
 
     def test_follows_count(self):
         user = User.objects.get(username = "codeguru")
